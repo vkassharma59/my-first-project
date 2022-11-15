@@ -10,6 +10,9 @@ export class ServersComponent implements OnInit {
   allowToAddNewSever: boolean = true;
   serverCreateStatus: string = 'No server are created!';
   serverName: string = 'TestServer';
+  serverCreated: boolean = false;
+
+  username: string = '';
 
   constructor() {
     setTimeout(() => {
@@ -20,11 +23,16 @@ export class ServersComponent implements OnInit {
   ngOnInit(){}
 
   onServerCreate(){
-    this.serverCreateStatus = 'Server is created!';
+    this.serverCreated = true;
+    this.serverCreateStatus = 'Server is created and the name of the sever is ' + this.serverName;
   }
 
   onUpdateServerName(event: Event){
     // typecast event value if we use "Event" in type instead of any.
     this.serverName = (<HTMLInputElement>event.target).value;
+  }
+
+  onResetUserName(){
+    this.username = '';
   }
 }
